@@ -17,7 +17,17 @@
 	
 	
 	<?php  
-$conn = mysqli_connect("localhost","root","","testaa");
+$mysqli = new mysqli("localhost", "root", "", "testaa");
+    $mysqli -> set_charset("utf8");
+
+    $requete = "SELECT * FROM abdelouhad";
+    $resultat = $mysqli -> query($requete);
+
+    while ($ligne = $resultat -> fetch_assoc()) {
+        echo $ligne['number'] . ' ' . $ligne['name'] . ' ' . $ligne['city'] . ' ';
+        echo $ligne['email'] ;
+    }
+    $mysqli->close();
 
 	/* 
 	Étape 1 - Créer une base de données dans PHPmyadmin
